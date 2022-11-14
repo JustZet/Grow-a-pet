@@ -1,0 +1,32 @@
+{
+    "dogs" : {
+        "1" : {
+            "name": "Great Dane",
+            "description": "",
+            "icon": ""
+        },
+        "2" : {
+            "name": "Husky"
+            
+        },
+        "3" : {
+            "name": "Busset Hound"
+        },
+        "4" : {
+            "name": "West Highland White Terrier"
+        },
+        "5" : {
+            "name": "Collie Rough"
+        },
+        "6" : {
+            "name": "Doberman Pinscher"
+        },
+        "7" : {
+            "name": "Pembroke Welsh Corgi"
+        },
+        "8" : {
+            "name": "Bull Terrier"
+        }
+    },
+    "cats" : {}
+}
