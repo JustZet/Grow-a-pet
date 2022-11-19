@@ -3,18 +3,17 @@ import os
 
 import discord
 from discord.ext import commands
-from const import *
-
+from core.config.config import Config
 
 intents = discord.Intents.default()
 
 # intents.message_content = True
-bot = commands.Bot(command_prefix=BOT_PREFIX, intents=intents)
+bot = commands.Bot(command_prefix=Config.BOT_PREFIX, intents=intents)
 
 
 @bot.event
 async def on_ready():
-	guild = discord.Object(id=GUILD_ID)
+	guild = discord.Object(id=Config.GUILD_ID)
 	# async with bot:
 
 	bot.tree.copy_global_to(guild=guild)
@@ -23,7 +22,7 @@ async def on_ready():
 
 
 async def load_cogs():
-    for f in os.listdir(COGS_DIR):
+    for f in os.listdir(Config.COGS_DIR):
     	if f.endswith(".py"):
     		if f != "__init__.py":
     			await bot.load_extension("cogs." + f[:-3])
@@ -32,7 +31,7 @@ async def main():
 	await load_cogs()
 
 
-	await bot.start(BOT_TOKEN)
+	await bot.start(Config.BOT_TOKEN)
 
 if __name__ == "__main__":
 	asyncio.run(main())

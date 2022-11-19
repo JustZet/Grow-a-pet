@@ -5,23 +5,22 @@ from dataclasses import dataclass
 import pymongo
 from pymongo.errors import DuplicateKeyError
 
-sys.path.append("lib/databases")
-# from dbconfig import MongoDb as db
 
-from dbconfig import MongodbConfig as db
+from databases.dbconfig import Databases
 
 
 @dataclass
 class MongoDatabase: # Connect to MongoDB:
     """This is connection with local mongo database."""
-    host = db.host
-    port = db.port
-    mdb = db.database
-    col = db.collection
-    
-    conn = pymongo.MongoClient(host, port)
-    database = conn[mdb]
-    collection = database[col]
+    def __init__(self, db_config: Databases = Databases.profiles):
+        host = db_config.host
+        port = db_config.port
+        mdb = db_config.database
+        col = db_config.collection
+        
+        conn = pymongo.MongoClient(host, port)
+        database = conn[mdb]
+        self.collection = database[col]
 
     def dbCollection(self):
         """Return collection."""

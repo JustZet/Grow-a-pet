@@ -1,0 +1,34 @@
+ {
+        "1" : {
+            "name": "Great Dane",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/1.png"
+        },
+        "2" : {
+            "name": "Husky",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/2.png"
+        },
+        "3" : {
+            "name": "Busset Hound",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/3.png"
+        },
+        "4" : {
+            "name": "West Highland White Terrier",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/4.png"
+        },
+        "5" : {
+            "name": "Collie Rough",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/5.png"
+        },
+        "6" : {
+            "name": "Doberman Pinscher",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/6.png"
+        },
+        "7" : {
+            "name": "Pembroke Welsh Corgi",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/7.png"
+        },
+        "8" : {
+            "name": "Bull Terrier",
+            "icon": "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/8.png"
+        }
+}

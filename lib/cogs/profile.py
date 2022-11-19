@@ -1,41 +1,21 @@
 import sys
-
+import asyncio
+from dataclasses import asdict
+from datetime import datetime
 import discord
 from discord.ext import commands
+import traceback
+
 
 sys.path.append("lib")
 from databases.mongodb import MongoDatabase
 from core.interface.embeds import Embeds
+from core.models.profile import ProfileModel
+from core.config import *
 
 db = MongoDatabase()
 
-class Confirm(discord.ui.View):
-    def __init__(self):
-        super().__init__()
-        self.value = None
 
-    @discord.ui.button(label='Create', style=discord.ButtonStyle.green)
-    async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
-        button.disabled = True
-        table = {
-            "userId": interaction.user.id,
-            "userName": interaction.user.name,
-
-        }
-        db.upload_table(table)
-        await interaction.response.send_message('Profile successfully created', ephemeral=True)
-        self.value = True
-        self.stop()
-
-    # This one is similar to the confirmation button except sets the inner value to `False`
-    @discord.ui.button(label='Cancel', style=discord.ButtonStyle.grey)
-    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
-        
-        self.value = False
-        self.stop()
-        
-        
-        
 class Profile(commands.Cog):
     def __init__(self, bot):
         self.bot: commands.Bot = bot
@@ -44,33 +24,30 @@ class Profile(commands.Cog):
         @self.bot.tree.command(name="profile", description="Show your pet profile")
         async def profile(interaction: discord.Interaction):
             
-            
             user_id = interaction.user.id
+            
+            db = MongoDatabase()
             user_exists = db.exists_in_db({"userId": user_id})
             
             if user_exists:
-                
-                embd=Embeds().basic_embed(
-                    
-                title=interaction.user.display_name,
-                description='Welcome back user',
-                )
-        
-                await interaction.response.send_message(embed=embd)
 
-            else:
-                embd=Embeds().basic_embed(
-                title="Account",
-                description=f'Welcome {interaction.user.display_name}, you don t have a profile, do you want to create one? :)',
-          
+                embed = Embeds().basic_embed(
+                title="Profile",
+                description=f'Welcome back {interaction.user.display_name}',
+                thubnail=Images.BOT_AVATAR,
                 )
-                await interaction.response.send_message(embed=embd)
-            
-        # @self.bot.tree.command(name="delete", description="Delete your pet profile")
-        # async def delete(interaction: discord.Interaction):
-        #     user_id: str = interaction.user.id
-            
-            
+                await interaction.response.send_message(embed=embed, ephemeral=True)
+                
+            else:
+                embed = Embeds().basic_embed(
+                title="Profile",
+                description=f'Welcome {interaction.user.display_name}, you don t have a profile, do you want to create one? \n Please use the following commands :)',
+                thubnail=Images.BOT_AVATAR,
+                )
+                embed.add_field(inline=True, name='/create', value=f'{Emojis.KISS} Create pet profile ')
+                await interaction.response.send_message(embed=embed, ephemeral=True)
+
+
             
 
 
