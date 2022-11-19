@@ -6,11 +6,9 @@ from bson.objectid import ObjectId
 from flask.json import JSONEncoder
 from flask_cors import CORS
 
-from routes.pets.pets import Pets
-import sys
 
-
-
+from routes.pets import Pets
+from routes.pet import Pet
 
 class CustomJSONEncoder(JSONEncoder):
 
@@ -34,6 +32,7 @@ api = Api(app)
 
 
 api.add_resource(Pets, "/petsApi/pets")
+api.add_resource(Pet, "/petsApi/pets/<id>")
 
 
 if __name__ == "__main__":

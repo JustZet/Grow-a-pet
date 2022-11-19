@@ -21,3 +21,4 @@ class Pets(Resource):
             
         numResults = len(pets)
         return jsonify({"allResultsNumber": numResults, "pets": pets})
+

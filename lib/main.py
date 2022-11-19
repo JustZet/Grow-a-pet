@@ -11,16 +11,17 @@ intents = discord.Intents.default()
 bot = commands.Bot(command_prefix=Config.BOT_PREFIX, intents=intents)
 
 
+# Set bot logged in message
 @bot.event
 async def on_ready():
 	guild = discord.Object(id=Config.GUILD_ID)
-	# async with bot:
-
+ 
 	bot.tree.copy_global_to(guild=guild)
 	await bot.tree.sync(guild=guild)
 	print(f'Logged in as {bot.user} (ID: {bot.user.id})')
 
 
+# Load bot commands
 async def load_cogs():
     for f in os.listdir(Config.COGS_DIR):
     	if f.endswith(".py"):
