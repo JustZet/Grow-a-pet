@@ -31,8 +31,8 @@ api = Api(app)
 
 
 
-api.add_resource(Pets, "/petsApi/pets")
-api.add_resource(Pet, "/petsApi/pets/<id>")
+api.add_resource(Pets, "/api/pets")
+api.add_resource(Pet, "/api/pets/<id>")
 
 
 if __name__ == "__main__":

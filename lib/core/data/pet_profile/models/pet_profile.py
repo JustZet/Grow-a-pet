@@ -13,5 +13,16 @@ class PetProfileModel:
     userAccountCreatedAt: datetime
     profileCreatedAt: datetime
     petId: int
-    _id: Optional[ObjectId] = None
     feedback: Optional[object] = None
+
+
+# @dataclass
+# class PetProfileModel:
+#     id: int
+#     name: str
+#     # lastFed: datetime
+#     # lastDrinkedWhater: datetime
+#     level: int
+#     profileCreatedAt: datetime
+    
+    

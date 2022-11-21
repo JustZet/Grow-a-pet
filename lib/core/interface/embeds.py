@@ -1,11 +1,13 @@
 
 import discord
-
+import sys
+sys.path.append("lib")
+from core.config import *
 
 class Embeds:
     def __init__(self): 
-        self.icon_url = "https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/bot/avatar.png"
-        self.footer_text = "Grow me a pet"
+        self.icon_url = Images.BOT_AVATAR
+        self.footer_text = "Grow a pet"
     
     def basic_embed(
     self,
@@ -28,19 +30,10 @@ class Embeds:
         return embed
        
         
-    
-       
-    def error_embed(
-    self,
-    title: str = None, 
-    description: str = None,
-    ) -> discord.Embed:
+    def profile_not_found(self):
         
-        embed = discord.Embed(
-            title=title,
-            description=description,
-            color=discord.colour.Color.random,
-            )
-        return embed
-        
-    
+        return self.basic_embed(
+            title="Delete profile",
+            description='hmm, it seems that you don\'t have an pet profile.. \n Do you want to create one?',
+            thubnail=Images.BOT_AVATAR,
+        )

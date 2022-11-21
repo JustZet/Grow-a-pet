@@ -18,7 +18,8 @@ class PetProfileLocalDatasource:
         pet_exists = self.db.exists_in_db(query_pet)
         
         if pet_exists:
-            pet_profile_dict = self.db.find_table(query_pet)
+            pet_profile_dict: dict = self.db.find_table(query_pet)
+            pet_profile_dict.pop("_id")
             pet_profile = PetProfileModel(**pet_profile_dict)
             return pet_profile
         
@@ -38,8 +39,6 @@ class PetProfileLocalDatasource:
             return None
         
         
-        
-    
     def insert_pet_profile(self, profile: PetProfileModel)  -> (InsertOneResult | None):
         query_pet: dict = {"userId": profile.userId}
         pet_exists = self.db.exists_in_db(query_pet)
@@ -50,7 +49,9 @@ class PetProfileLocalDatasource:
         
         else: 
             dict_profile = asdict(profile)
+            print(dict_profile)
             upload = self.db.upload_table(dict_profile)
+            
             return upload
         
         

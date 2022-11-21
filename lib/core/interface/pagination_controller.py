@@ -10,7 +10,6 @@ import traceback
 sys.path.append("lib")
 from core.interface.embeds import Embeds
 from core.data.pet_profile.repositories.pet_profile_repository import PetProfileRepository, PetProfileModel
-from core.models.profile import ProfileModel
 from core.config import *
 
 sys.path.append(".")

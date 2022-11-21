@@ -6,15 +6,30 @@ import discord
 from discord.ext import commands
 import traceback
 
+sys.path.append(".")
+from databases.mongodb import MongoDatabase
 
 sys.path.append("lib")
-from databases.mongodb import MongoDatabase
 from core.interface.embeds import Embeds
-from core.models.profile import ProfileModel
 from core.config import *
+from core.data.pet_profile.repositories.pet_profile_repository import PetProfileRepository
 
-db = MongoDatabase()
+from cogs.profile.show_profile.embeds.embeds import profile_not_found_embed
+from cogs.profile.create.views.create_profile import CreateProfileView
 
+
+pet_profile_repo = PetProfileRepository()
+
+async def show_profile(interaction: discord.Interaction):
+        
+    if pet_profile_repo.get_pet_profile(interaction.user.id) != None:
+        await interaction.response.send_message("Not implemented yet..", ephemeral=True)
+        
+    else:
+        await interaction.response.send_message(embed=profile_not_found_embed, view=CreateProfileView(), ephemeral=True)
+
+
+    
 
 class Profile(commands.Cog):
     def __init__(self, bot):
