@@ -29,10 +29,10 @@ class PetProfile(commands.Cog):
             description=f'"Is a good dog, he don\'t bite, trust me 🤕..."',
             thubnail="https://raw.githubusercontent.com/JustZet/Grow-a-pet/main/assets/dogs/1.png",
             )
-            embed.add_field(name="weight", value="100kg")
-            embed.add_field(name="height", value="twice as much as you")
-            embed.add_field(name="friendly", value="yes🤕..", inline=False)
-            embed.add_field(name="name", value="what name he want", inline=False)
+            # embed.add_field(name="weight", value="100kg")
+            # embed.add_field(name="height", value="twice as much as you")
+            # embed.add_field(name="friendly", value="yes🤕..", inline=False)
+            # embed.add_field(name="name", value="what name he want", inline=False)
 
             await interaction.response.send_message(embed=embed, ephemeral=True)
 

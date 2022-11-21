@@ -24,7 +24,7 @@ class CreateProfileView(discord.ui.View):
         self.timeout = 100
         self.pet_profile_repo = PetProfileRepository()
 
-    @discord.ui.button(label='Start', style=discord.ButtonStyle.green)
+    @discord.ui.button(label='Create', style=discord.ButtonStyle.green)
     async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
         profile = PetProfileModel(
             userId= interaction.user.id,
